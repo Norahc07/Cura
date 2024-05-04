@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-def dashboard(request):
-    return render(request, 'myapp/dashboard.html')
+def index(request):
+    return render(request, 'myapp/index.html')
 
 def home(request):
     return render(request, 'myapp/home.html')
