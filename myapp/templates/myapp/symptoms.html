@@ -1,0 +1,413 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Symptoms Checker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-w8Bt/zLCq4x84Z3fWt82BBAYklPSVSDT6z7Oybx1P5vCIx9+kkQYPWl/0MG7x4pgmkf7ovumgF+PjiueXaN1Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/symptoms.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+    <!-- Video background -->
+    <video autoplay loop muted id="video-background">
+        <source src="{% static 'videos/DNA.mp4' %}" type="video/mp4">
+        <!-- Add additional source elements for other video formats if necessary -->
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="slidebar">
+        <a href="/home">
+            <img src="{% static 'images/logo1.png' %}" alt="Logo" class="logo">
+        </a>
+        <ul>
+            <li>
+                <a href="/home">
+                    <i class="fa fa-home" aria-hidden="true"></i>Home
+                </a>
+            </li>
+            <li>
+                <a href="/symptoms-checker">
+                    <i class="fas fa-diagnoses"></i>Symptoms Checker
+                </a>
+            </li>
+            <li>
+                <a href="/consultation-booking">
+                    <i class="fa fa-book" aria-hidden="true"></i>Consultation Booking
+                </a>
+            </li>
+            <li>
+                <a href="/doctor">
+                    <i class="fas fa-user-md"></i>Doctors
+                </a>
+            </li>
+            <li>
+                <a href="/history">
+                    <i class="fa fa-history" aria-hidden="true"></i>History
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+        <div class="content">
+            <p>Have any problems with managing your dashboard? Try to contact the customer support.</p>
+            <button>Contact</button>
+        </div>
+
+        <div class="profile">
+            <img src="{% static 'images/profile.png' %}" alt="profile" class="dp">
+            <h1>Luigi Amarillo</h1>
+            <img src="{% static 'images/notif.png' %}" alt="notification" class="notif">
+        </div>
+        
+        <!-- Symptoms Checker Section -->
+        <div class="container">
+            <h2>Symptoms Checker</h2> <!-- Added text above Symptoms Checker -->
+            <hr>
+            <h3>symptoms that people may experience related to various parts of the body:</h3>
+            <div class="mobile-screen">
+                <div class="result">Result will be displayed here</div>
+                <div class="symptoms-container">
+                    <!-- First Grid -->
+                    <div class="grid">
+                        
+                        <div class="symptoms">
+                            <label for="head">Head:</label>
+                            <select id="head">
+                                <option value="">- Select -</option>
+                                <option value="Headaches">Headaches</option>
+                                <option value="Dizziness">Dizziness</option>
+                                <option value="Nausea">Nausea</option>
+                                <option value="Blurred vision">Blurred vision</option>
+                                <option value="Sensitivity to light or sound">Sensitivity to light or sound</option>
+                            </select>
+                            <label for="eyes">Eyes:</label>
+                            <select id="eyes">
+                                <option value="">- Select -</option>
+                                <option value="Blurred vision">Blurred vision</option>
+                                <option value="Eye pain">Eye pain</option>
+                                <option value="Redness or itching">Redness or itching</option>
+                                <option value="Watery eyes">Watery eyes</option>
+                                <option value="Sensitivity to light">Sensitivity to light</option>
+                            </select>
+                            <label for="ears">Ears Nose and Throat:</label>
+                            <select id="ears">
+                                <option value="">- Select -</option>
+                                <option value="Ear pain or discomfort">Ear pain or discomfort</option>
+                                <option value="Ringing in the ears (tinnitus)">Ringing in the ears (tinnitus)</option>
+                                <option value="Nasal congestion">Nasal congestion</option>
+                                <option value="Runny or stuffy nose">Runny or stuffy nose</option>
+                                <option value="Sore throat">Sore throat</option>
+                                <option value="Hoarseness">Hoarseness</option>
+                            </select>
+                            <label for="mouth">Mouth and Teeth:</label>
+                            <select id="mouth">
+                                <option value="">- Select -</option>
+                                <option value="Toothache">Toothache</option>
+                                <option value="Gum pain or swelling">Gum pain or swelling</option>
+                                <option value="Bad breath">Bad breath</option>
+                                <option value="Mouth sores">Mouth sores</option>
+                                <option value="Dry mouth">Dry mouth</option>
+                                <option value="Difficulty swallowing">Difficulty swallowing</option>
+                            </select>
+                            <label for="neck">Neck and Shoulders:</label>
+                            <select id="neck">
+                                <option value="">- Select -</option>
+                                <option value="Neck pain or stiffness">Neck pain or stiffness</option>
+                                <option value="Shoulder pain">Shoulder pain</option>
+                                <option value="Limited range of motion">Limited range of motion</option>
+                                <option value="Muscle tension or knots">Muscle tension or knots</option>
+                            </select>
+                            <label for="chest">Chest:</label>
+                            <select id="chest">
+                                <option value="">- Select -</option>
+                                <option value="Chest pain or discomfort">Chest pain or discomfort</option>
+                                <option value="Shortness of breath">Shortness of breath</option>
+                                <option value="Coughing">Coughing</option>
+                                <option value="Wheezing">Wheezing</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                    <!-- Second Grid -->
+                    <div class="grid">
+                        <div class="symptoms">
+                            <label for="heart">Heart:</label>
+                            <select id="heart">
+                                <option value="">- Select -</option>
+                                <option value="Irregular heartbeat (palpitations)">Irregular heartbeat (palpitations)</option>
+                                <option value="High blood pressure">High blood pressure</option>
+                                <option value="Chest pain">Chest pain</option>
+                                <option value="Swelling in the legs or ankles">Swelling in the legs or ankles</option>
+                            </select>
+                            <label for="lungs">Lungs and Respiratory System:</label>
+                            <select id="lungs">
+                                <option value="">- Select -</option>
+                                <option value="Cough">Cough</option>
+                                <option value="Shortness of breath">Shortness of breath</option>
+                                <option value="Wheezing">Wheezing</option>
+                                <option value="Chest tightness">Chest tightness</option>
+                                <option value="Chronic mucus production">Chronic mucus production</option>
+                            </select>
+                            <label for="abdomen">Abdomen:</label>
+                            <select id="abdomen">
+                                <option value="">- Select -</option>
+                                <option value="Abdominal pain or cramping">Abdominal pain or cramping</option>
+                                <option value="Bloating">Bloating</option>
+                                <option value="Indigestion or heartburn">Indigestion or heartburn</option>
+                                <option value="Nausea or vomiting">Nausea or vomiting</option>
+                                <option value="Changes in bowel habits (diarrhea, constipation)">Changes in bowel habits (diarrhea, constipation)</option>
+                            </select>
+                            <label for="back">Back:</label>
+                            <select id="back">
+                                <option value="">- Select -</option>
+                                <option value="Back pain">Back pain</option>
+                                <option value="Muscle spasms">Muscle spasms</option>
+                                <option value="Stiffness">Stiffness</option>
+                                <option value="Shooting or stabbing pain">Shooting or stabbing pain</option>
+                                <option value="Limited range of motion">Limited range of motion</option>
+                            </select>
+                            <label for="limbs">Limbs (Arms and Legs):</label>
+                            <select id="limbs">
+                                <option value="">- Select -</option>
+                                <option value="Joint pain or swelling">Joint pain or swelling</option>
+                                <option value="Muscle pain or weakness">Muscle pain or weakness</option>
+                                <option value="Tingling or numbness">Tingling or numbness</option>
+                                <option value="Difficulty moving or walking">Difficulty moving or walking</option>
+                                <option value="Swelling or inflammation">Swelling or inflammation</option>
+                            </select>
+                            <label for="skin">Skin:</label>
+                            <select id="skin">
+                                <option value="">- Select -</option>
+                                <option value="Rash">Rash</option>
+                                <option value="Itching">Itching</option>
+                                <option value="Redness or inflammation">Redness or inflammation</option>
+                                <option value="Dryness or flakiness">Dryness or flakiness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Repeat for more grids -->
+                </div>
+            </div>
+            <button class="generate-btn" onclick="generateResults()">Generate</button>
+        </div>
+    </div>
+
+    <script>
+        function generateResults() {
+    // Get selected symptoms from dropdown lists
+    var headSymptom = document.getElementById('head').value;
+    var eyesSymptom = document.getElementById('eyes').value;
+    var earsSymptom = document.getElementById('ears').value;
+    var mouthSymptom = document.getElementById('mouth').value;
+    var neckSymptom = document.getElementById('neck').value;
+    var chestSymptom = document.getElementById('chest').value;
+    var heartSymptom = document.getElementById('heart').value;
+    var lungsSymptom = document.getElementById('lungs').value;
+    var abdomenSymptom = document.getElementById('abdomen').value;
+    var backSymptom = document.getElementById('back').value;
+    var limbsSymptom = document.getElementById('limbs').value;
+    var skinSymptom = document.getElementById('skin').value;
+
+    // Initialize the result message
+    var resultMessage = 'Based on the selected symptoms:\n\n';
+
+    // Function to add symptom description to the result message
+    function addSymptomDescription(symptom, descriptions) {
+        if (symptom !== '') {
+            resultMessage += `"${symptom}" :\n${descriptions[symptom]}\n\n`; 
+        }
+    }
+
+    // Map each symptom to its possible descriptions
+    var symptomDescriptions = {
+        'Headaches': 'These can be caused by various factors, including tension, migraines, sinus issues, or other underlying conditions.',
+        'Dizziness': 'May result from inner ear problems, low blood pressure, dehydration, or other causes.',
+        'Nausea': 'Commonly associated with gastrointestinal issues, migraines, or pregnancy.',
+        'Blurred vision': 'Can be related to refractive errors, cataracts, or other eye disorders.',
+        'Eye pain': 'May be due to infections, dry eyes, or injury.',
+        'Redness or itching': 'Common in conjunctivitis (pink eye) or allergies.',
+        'Watery eyes': 'Can occur with allergies or eye irritation.',
+        'Sensitivity to light': 'Seen in conditions like photophobia or uveitis.',
+        'Ear pain or discomfort': 'May indicate ear infections or other issues.',
+        'Ringing in the ears (tinnitus)': 'Often associated with hearing loss or exposure to loud noise.',
+        'Nasal congestion': 'Common in colds, allergies, or sinusitis.',
+        'Runny or stuffy nose': 'Allergic rhinitis or infections.',
+        'Sore throat': 'Can be due to viral or bacterial infections.',
+        'Hoarseness': 'May result from vocal cord strain or infections.',
+        'Toothache': 'Dental cavities, gum disease, or dental abscess.',
+        'Gum pain or swelling': 'Gingivitis or periodontal disease.',
+        'Bad breath': 'Often related to poor oral hygiene or infections.',
+        'Mouth sores': 'Aphthous ulcers or cold sores.',
+        'Dry mouth': 'Medications, dehydration, or autoimmune conditions.',
+        'Difficulty swallowing': 'Dysphagia due to various causes.',
+        'Neck pain or stiffness': 'Muscle strain, cervical spondylosis, or injury.',
+        'Shoulder pain': 'Rotator cuff injuries, bursitis, or arthritis.',
+        'Limited range of motion': 'May be due to joint issues or muscle tightness.',
+        'Muscle tension or knots': 'Often related to stress or poor posture.',
+        'Chest pain or discomfort': 'Can be cardiac (angina, heart attack) or non-cardiac (musculoskeletal, acid reflux).',
+        'Shortness of breath': 'Seen in heart or lung conditions.',
+        'Coughing': 'Respiratory infections, allergies, or chronic conditions.',
+        'Wheezing': 'Asthma, bronchitis, or allergies.',
+        'Irregular heartbeat (palpitations)': 'Arrhythmias or heart conditions.',
+        'High blood pressure': 'Hypertension.',
+        'Swelling in the legs or ankles': 'Edema due to heart failure or other causes.',
+        'Chronic mucus production': 'Chronic bronchitis or respiratory infections.',
+        'Back pain': 'Musculoskeletal strain, herniated discs, or spinal issues.',
+        'Muscle spasms': 'Often related to muscle strain or overuse.',
+        'Stiffness': 'Can result from arthritis or muscle tension.',
+        'Shooting or stabbing pain': 'Nerve compression or injury.',
+        'Joint pain or swelling': 'Arthritis (rheumatoid arthritis, osteoarthritis) or other inflammatory conditions.',
+        'Muscle pain or weakness': 'Myalgia (muscle pain) due to infections (flu, viral myositis) or other causes.',
+        'Tingling or numbness': 'Peripheral neuropathy (diabetes, nerve compression).',
+        'Difficulty moving or walking': 'Neurological conditions (stroke, multiple sclerosis) or musculoskeletal issues.',
+        'Swelling or inflammation': 'Arthritis, soft tissue injuries, or infections.',
+        'Rash': 'Can be due to allergies, infections (viral exanthems, fungal infections), or autoimmune conditions (psoriasis, eczema).',
+        'Itching': 'Seen in various skin conditions (contact dermatitis, scabies, hives).',
+        'Redness or inflammation': 'Skin infections (cellulitis, impetigo) or inflammatory skin disorders.',
+        'Dryness or flakiness': 'Eczema, xerosis (dry skin), or psoriasis.',
+        'Lesions or sores': 'May indicate infections (herpes, shingles), skin cancer, or other dermatological conditions.'
+        // Add more symptoms and descriptions as needed
+    };
+
+    // Add symptom descriptions to the result message
+    addSymptomDescription(headSymptom, symptomDescriptions);
+    addSymptomDescription(eyesSymptom, symptomDescriptions);
+    addSymptomDescription(earsSymptom, symptomDescriptions);
+    addSymptomDescription(mouthSymptom, symptomDescriptions);
+    addSymptomDescription(neckSymptom, symptomDescriptions);
+    addSymptomDescription(chestSymptom, symptomDescriptions);
+    addSymptomDescription(heartSymptom, symptomDescriptions);
+    addSymptomDescription(lungsSymptom, symptomDescriptions);
+    addSymptomDescription(abdomenSymptom, symptomDescriptions);
+    addSymptomDescription(backSymptom, symptomDescriptions);
+    addSymptomDescription(limbsSymptom, symptomDescriptions);
+    addSymptomDescription(skinSymptom, symptomDescriptions);
+    // Add more calls to addSymptomDescription for other symptoms
+
+    // Display the result message
+    if (resultMessage !== 'Based on the selected symptoms:\n\n') {
+        document.querySelector('.result').textContent = resultMessage;
+    } else {
+        // If no symptoms are selected, display a message
+        document.querySelector('.result').textContent = 'No symptoms selected.';
+    }
+}
+
+        // Add event listener to the Login button
+        document.getElementById("home-btn").addEventListener("click", function(event) {
+            // Prevent default form submission behavior
+            event.preventDefault();
+            
+            // Navigate to the home.html page
+            window.location.href = "/home/";
+        });
+
+    </script>
+
+    <style>
+        /* CSS code here */
+        .container {
+            margin-top: 120px;
+            margin-left: 680px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 785px;
+        }
+
+        .container h2 {
+            margin-top: 0px;
+            font-size: 24px;
+            color: #00111d;
+            font-family: 'poppins';
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dashed #666666;
+            color: #fff;
+            background-color: #fff;
+            height: 1px;
+            width: 100%;
+        }
+
+        .container h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #00111d;
+            font-family: 'poppins';
+            font-weight: normal;
+        }
+
+        .result {
+        
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            position: absolute;
+            left: -390px; /* Adjust position as needed */
+            top: 0;
+            height: 93%;
+            width: 330px;
+            font-family: 'poppins';
+        }
+
+        .generate-btn {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            font-family: 'poppins';
+        }
+
+        .generate-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Grid layout for symptoms */
+        .symptoms-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+
+        /* Additional styling for the dropdown list */
+        .symptoms {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .symptoms li {
+            margin-bottom: 10px;
+        }
+
+        .symptoms label {
+            display: block;
+            font-weight: bold;
+            font-family: 'poppins';
+        }
+
+        .symptoms select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+    </style>
+</body>
+</html>

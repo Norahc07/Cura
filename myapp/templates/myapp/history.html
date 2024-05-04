@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-w8Bt/zLCq4x84Z3fWt82BBAYklPSVSDT6z7Oybx1P5vCIx9+kkQYPWl/0MG7x4pgmkf7ovumgF+PjiueXaN1Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/history.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  </head>
+  <body>
+    <!-- Video background -->
+    <video autoplay loop muted id="video-background">
+        <source src="{% static 'videos/DNA.mp4' %}" type="video/mp4">
+        <!-- Add additional source elements for other video formats if necessary -->
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="slidebar">
+        <a href="/home">
+            <img src="{% static 'images/logo1.png' %}" alt="Logo" class="logo">
+        </a>
+        <ul>
+            <li>
+                <a href="/home">
+                    <i class="fa fa-home" aria-hidden="true"></i>Home
+                </a>
+            </li>
+            <li>
+                <a href="/symptoms-checker">
+                    <i class="fas fa-diagnoses"></i>Symptoms Checker
+                </a>
+            </li>
+            <li>
+                <a href="/consultation-booking">
+                    <i class="fa fa-book" aria-hidden="true"></i>Consultation Booking
+                </a>
+            </li>
+            <li>
+                <a href="/doctor">
+                    <i class="fas fa-user-md"></i>Doctors
+                </a>
+            </li>
+            <li>
+                <a href="/history">
+                    <i class="fa fa-history" aria-hidden="true"></i>History
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+        <div class="content">
+            <p>Have any problems with managing your dashboard? Try to contact the customer support.</p>
+            <button>Contact</button>
+        </div>
+
+        <div class="profile">
+            <img src="{% static 'images/profile.png' %}" alt="profile" class="dp">
+            <h1>Luigi Amarillo</h1>
+            <img src="{% static 'images/notif.png' %}" alt="notification" class="notif">
+        </div>
+
+        <!-- Medical History Section -->
+        <div class="container">
+            <h2>Medical History</h2> <!-- Added text above Symptoms Checker -->
+            <hr>
+            <h3>Patients</h3>
+            
+            <!-- Search bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Popup page -->
+            <div class="popup" id="popup">
+                <div class="popup-content">
+                    <h2>
+                        <span>Done</span>
+                        Luigi Amarillo
+                        <button class="delete-btn">Delete</button>
+                    </h2>
+                    <hr>
+                    <!-- Details of the patient's history -->
+                    <!-- Add your content here, e.g., client name, appointment type, date, etc. -->
+                    <div id="details">
+                        <p><strong>Doctor:</strong> Dr. Smith a Dermatologist</p>
+                        <p><strong>Appointment Type:</strong> Initial Consultation</p>
+                        <p><strong>Date:</strong> April 30, 2024</p>
+                    </div>
+                    <!-- Add more details as needed -->
+
+                    <!-- Close button -->
+                    <button class="close-btn" onclick="closePopup()">Close</button>
+                </div>
+            </div>
+
+
+        <!-- Patient records -->
+        <div class="patient-records">
+            <!-- Example record -->
+            <div class="patient-card">
+                <div class="profile-info">
+                    <img src="{% static 'images/profile-pic.jpg' %}" alt="Profile Picture">
+                    <h4>Luigi Amarillo</h4>
+                </div>
+                <div class="appointment-info">
+                    <p>Initial Consultation</p>
+                    <p>April 30, 2024</p>
+                </div>
+                <button class="view-details-btn" onclick="openPopup()"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <!-- Repeat this structure for each patient record -->
+            <!-- You can use a loop to generate patient records dynamically -->
+        </div>
+    
+            
+        </div>
+    </div>
+
+    <style>
+        /* CSS code here */
+        .container {
+            margin-top: 120px;
+            margin-left: 290px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 400px;
+            height: 600px;
+        }
+
+        .container h2 {
+            margin-top: 0px;
+            font-size: 24px;
+            color: #00111d;
+            font-family: 'poppins';
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dashed #666666;
+            color: #fff;
+            background-color: #fff;
+            height: 1px;
+            width: 100%;
+        }
+
+        .container h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #00111d;
+            font-family: 'poppins';
+            font-weight: normal;
+        }
+    </style>
+
+    <script>
+        // JavaScript functions to open and close the popup
+        function openPopup() {
+            document.getElementById("popup").classList.add("open-popup");
+        }
+
+        function closePopup() {
+            document.getElementById("popup").classList.remove("open-popup");
+        }
+
+    </script>
+
+        
+  </body>
+</html>

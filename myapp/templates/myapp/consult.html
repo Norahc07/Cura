@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consultation Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-w8Bt/zLCq4x84Z3fWt82BBAYklPSVSDT6z7Oybx1P5vCIx9+kkQYPWl/0MG7x4pgmkf7ovumgF+PjiueXaN1Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/consult.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+    <!-- Video background -->
+    <video autoplay loop muted id="video-background">
+        <source src="{% static 'videos/DNA.mp4' %}" type="video/mp4">
+        <!-- Add additional source elements for other video formats if necessary -->
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="slidebar">
+        <a href="/home">
+            <img src="{% static 'images/logo1.png' %}" alt="Logo" class="logo">
+        </a>
+        <ul>
+            <li>
+                <a href="/home">
+                    <i class="fa fa-home" aria-hidden="true"></i>Home
+                </a>
+            </li>
+            <li>
+                <a href="/symptoms-checker">
+                    <i class="fas fa-diagnoses"></i>Symptoms Checker
+                </a>
+            </li>
+            <li>
+                <a href="/consultation-booking">
+                    <i class="fa fa-book" aria-hidden="true"></i>Consultation Booking
+                </a>
+            </li>
+            <li>
+                <a href="/doctor">
+                    <i class="fas fa-user-md"></i>Doctors
+                </a>
+            </li>
+            <li>
+                <a href="/history">
+                    <i class="fa fa-history" aria-hidden="true"></i>History
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+        <div class="content">
+            <p>Have any problems with managing your dashboard? Try to contact the customer support.</p>
+            <button>Contact</button>
+        </div>
+
+        <div class="profile">
+            <img src="{% static 'images/profile.png' %}" alt="profile" class="dp">
+            <h1>Luigi Amarillo</h1>
+            <img src="{% static 'images/notif.png' %}" alt="notification" class="notif">
+        </div>
+
+        <!-- Consultation Booking Section -->
+<div class="container">
+    <h2>Consultation Booking</h2> <!-- Added text above Symptoms Checker -->
+    <hr>
+    <div class="consult-container">
+        <div class="row">
+            <div class="column">Lastname</div>
+            <div class="column">Firstname</div>
+            <div class="column">M.I.</div>
+            <div class="column">Appointment Type</div>
+            <div class="column">Scheduled Time</div>
+            <div class="column">Date</div>
+            <div class="column">Doctor</div>
+        </div>
+        <!-- You can add more rows dynamically here if needed -->
+    </div>  
+
+    <button type="submit" class="book-appointment-btn" onclick="openPopup()">Book Appointment</button>
+    
+    <div class="popup" id="popup">
+        <h2>Add Booking</h2>
+        <hr>
+        <label for="type">Appointment Type:</label>
+        <select id="type">
+            <option value="">- Select -</option>
+            <option value="Follow-up">Follow-up</option>
+            <option value="Initial Consultation">Initial Consultation</option>
+            <option value="Routine Check-up">Routine Check-up</option>
+            <option value="Specialist Referral">Specialist Referral</option>
+            <option value="Diagnostic Test Review">Diagnostic Test Review</option>
+            <option value="Treatment Plan Discussion">Treatment Plan Discussion</option>
+            <option value="Surgical Evaluation">Surgical Evaluation</option>
+            <option value="Medication Management">Medication Management</option>
+            <option value="Counseling Session">Counseling Session</option>
+            <option value="Vaccination Administration">Vaccination Administration</option>
+        </select>
+
+        <label for="specialist">Specialist:</label>
+        <select id="specialist">
+            <option value="">- Select -</option>
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Oncologist">Oncologist</option>
+            <option value="Gynecology">Gynecology</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Psychiatrist">Psychiatrist</option>
+            <option value="Endocrinologist">Endocrinologist</option>
+            <option value="Family Medicine">Family Medicine</option>
+            <option value="Gastroenterologist">Gastroenterologist</option>
+            <option value="Anesthesiology">Anesthesiology</option>
+            <option value="Allergist">Allergist</option>
+            <option value="Emergency Medicine">Emergency Medicine</option>
+            <option value="Ophthalmologist">Ophthalmologist</option>
+            <option value="Nephrologist">Nephrologist</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Radiologists">Radiologists</option>
+            <option value="Internist">Internist</option>
+            <option value="Geriatrician">Geriatrician</option>
+            <option value="Hematology">Hematology</option>
+            <option value="Infectious disease">Infectious disease</option>
+            <option value="Surgeon">Surgeon</option>
+            <option value="Otolaryngologist">Otolaryngologist</option>
+            <option value="Pulmonologist">Pulmonologist</option>
+            <option value="Critical Care Medicine">Critical Care Medicine</option>
+        </select>
+
+        <label for="doctors">Doctors:</label>
+        <select id="doctors"></select>
+
+        <label for="client">Client Name:</label>
+        <input type="text" id="lastname" placeholder="Last Name">
+        <input type="text" id="firstname" placeholder="First Name">
+        <input type="text" id="middle" placeholder="Middle Initial">
+
+        <label for="date">Date:</label>
+        <input type="date" id="date">
+
+        <label for="time">Time:</label>
+        <input type="time" id="time">
+
+        <div class="button-container">
+            <button id="cancel-button" onclick="closePopup()">Cancel</button>
+            <button id="submit-button" onclick="submitBooking()">Submit</button>
+        </div>
+    </div>
+</div>         
+        </div>
+    </div>
+    <style>
+        /* CSS code here */
+        .container {
+            margin-top: 120px;
+            margin-left: 290px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 1180px;
+        }
+
+        .container h2 {
+            margin-top: 0px;
+            font-size: 24px;
+            color: #00111d;
+            font-family: 'poppins';
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dashed #666666;
+            color: #fff;
+            background-color: #fff;
+            height: 1px;
+            width: 100%;
+        }
+
+        .bookAppointment-btn:hover {
+            background-color: #0056b3;
+        } 
+    </style>
+
+    <script>
+        let popup = document.getElementById("popup");
+
+        function openPopup(){
+            popup.classList.add("open-popup");
+        }
+
+        function closePopup(){
+            popup.classList.remove("open-popup");
+        }
+
+        // Get references to the select dropdowns
+        const specialistSelect = document.getElementById('specialist');
+        const doctorsSelect = document.getElementById('doctors');
+
+        // Doctor data grouped by specialist
+        const doctorData = {
+            'Dermatologist': ['Dr. Smith', 'Dr. Johnson', 'Dr. Williams'],
+            'Cardiologist': ['Dr. Brown', 'Dr. Davis', 'Dr. Miller'],
+            'Oncologist': ['Dr. Wilson', 'Dr. Moore', 'Dr. Taylor'],
+            // Add other specialist-doctor mappings here
+        };
+
+        // Function to populate the doctors dropdown based on selected specialist
+        function populateDoctors() {
+            const specialist = specialistSelect.value;
+            doctorsSelect.innerHTML = '<option value="">- Select Specialist First -</option>'; // Reset doctors dropdown
+
+            if (specialist && doctorData[specialist]) {
+                doctorData[specialist].forEach(doctor => {
+                    const option = document.createElement('option');
+                    option.textContent = doctor;
+                    option.value = doctor;
+                    doctorsSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Event listener for changes in the specialist dropdown
+        specialistSelect.addEventListener('change', populateDoctors);
+
+        // Populate doctors dropdown initially
+        populateDoctors();
+
+        function submitBooking() {
+            // Get input values from the popup
+            const appointmentType = document.getElementById('type').value;
+            const specialist = document.getElementById('specialist').value;
+            const doctor = document.getElementById('doctors').value;
+            const lastName = document.getElementById('lastname').value;
+            const firstName = document.getElementById('firstname').value;
+            const middleInitial = document.getElementById('middle').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            // Log the input values to the console for debugging
+            console.log("Appointment Type:", appointmentType);
+            console.log("Specialist:", specialist);
+            console.log("Doctor:", doctor);
+            console.log("Last Name:", lastName);
+            console.log("First Name:", firstName);
+            console.log("Middle Initial:", middleInitial);
+            console.log("Date:", date);
+            console.log("Time:", time);
+
+            // Create a new row for the appointment data
+            const newRow = document.createElement('div');
+            newRow.classList.add('row');
+
+            // Populate the new row with appointment data
+            newRow.innerHTML = `
+                <div class="column">${lastName}</div>
+                <div class="column">${firstName}</div>
+                <div class="column">${middleInitial}</div>
+                <div class="column">${appointmentType}</div>
+                <div class="column">${time}</div>
+                <div class="column">${date}</div>
+                <div class="column">${doctor}</div>
+            `;
+
+            // Append the new row to the consultation container
+            const consultContainer = document.querySelector('.consult-container');
+            consultContainer.appendChild(newRow);
+
+            // Close the popup
+            closePopup();
+        }
+
+
+
+    </script>
+
+  </body>
+</html>

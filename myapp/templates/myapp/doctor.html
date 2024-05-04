@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Doctors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-w8Bt/zLCq4x84Z3fWt82BBAYklPSVSDT6z7Oybx1P5vCIx9+kkQYPWl/0MG7x4pgmkf7ovumgF+PjiueXaN1Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/doctor.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+<!-- Video background -->
+<video autoplay loop muted id="video-background">
+    <source src="{% static 'videos/DNA.mp4' %}" type="video/mp4">
+    <!-- Add additional source elements for other video formats if necessary -->
+    Your browser does not support the video tag.
+</video>
+
+<div class="slidebar">
+    <a href="/home">
+        <img src="{% static 'images/logo1.png' %}" alt="Logo" class="logo">
+    </a>
+    <ul>
+        <li>
+            <a href="/home">
+                <i class="fa fa-home" aria-hidden="true"></i>Home
+            </a>
+        </li>
+        <li>
+            <a href="/symptoms-checker">
+                <i class="fas fa-diagnoses"></i>Symptoms Checker
+            </a>
+        </li>
+        <li>
+            <a href="/consultation-booking">
+                <i class="fa fa-book" aria-hidden="true"></i>Consultation Booking
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-user-md"></i>Doctors
+            </a>
+        </li>
+        <li>
+            <a href="/history">
+                <i class="fa fa-history" aria-hidden="true"></i>History
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="content">
+    <p>Have any problems with managing your dashboard? Try to contact the customer support.</p>
+    <button>Contact</button>
+</div>
+
+<div class="profile">
+    <img src="{% static 'images/profile.png' %}" alt="profile" class="dp">
+    <h1>Luigi Amarillo</h1>
+    <img src="{% static 'images/notif.png' %}" alt="notification" class="notif">
+</div>
+
+<!-- Doctors Section -->
+<div class="container">
+    <h3>Available</h3>
+    <div class="header-wrapper">
+        <h2 id="specialist-header">Specialist</h2>
+        <select id="specialist">
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Oncologist">Oncologist</option>
+            <option value="Gynecology">Gynecology</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Psychiatrist">Psychiatrist</option>
+            <option value="Endocrinologist">Endocrinologist</option>
+            <option value="Family Medicine">Family Medicine</option>
+            <option value="Gastroenterologist">Gastroenterologist</option>
+            <option value="Anesthesiology">Anesthesiology</option>
+            <option value="Allergist">Allergist</option>
+            <option value="Emergency Medicine">Emergency Medicine</option>
+            <option value="Ophthalmologist">Ophthalmologist</option>
+            <option value="Nephrologist">Nephrologist</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Radiologists">Radiologists</option>
+            <option value="Internist">Internist</option>
+            <option value="Geriatrician">Geriatrician</option>
+            <option value="Hematology">Hematology</option>
+            <option value="Infectious disease">Infectious disease</option>
+            <option value="Surgeon">Surgeon</option>
+            <option value="Otolaryngologist">Otolaryngologist</option>
+            <option value="Pulmonologist">Pulmonologist</option>
+            <option value="Critical Care Medicine">Critical Care Medicine</option>
+            <!-- Add other options dynamically -->
+        </select>
+    </div>
+    <hr>
+    <h3>Doctors</h3>
+    <div class="doctor-list"></div> <!-- This is where the doctor information will be displayed -->
+</div>
+
+<style>
+    /* CSS code here */
+    .container {
+        margin-top: 120px;
+        margin-left: 290px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        width: 1180px;
+        height: 600px;
+    }
+
+    .header-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .container #specialist {
+        margin-top: -50px;
+        width: 30%;
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .container h2 {
+        margin-top: -20px;
+        font-size: 30px;
+        color: #00111d;
+        font-family: 'poppins';
+        font-weight: bold;
+    }
+
+    .container h3 {
+        margin-top: 0px;
+        font-size: 24px;
+        color: #00111d;
+        font-family: 'poppins';
+    }
+
+    hr {
+        margin-top: -20px;
+        border: none;
+        border-top: 2px dashed #666666;
+        color: #fff;
+        background-color: #fff;
+        height: 1px;
+        width: 100%;
+    }
+
+    .container h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #00111d;
+        font-family: 'poppins';
+        font-weight: normal;
+    }
+</style>
+<script>
+    // JavaScript code here to fetch and display doctor information
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const specialistDropdown = document.getElementById('specialist');
+        const doctorList = document.querySelector('.doctor-list');
+
+        specialistDropdown.addEventListener('change', () => {
+            const selectedSpecialist = specialistDropdown.value;
+
+            // Make a request to the API to fetch doctor information based on the selected specialist
+            fetchDoctorInformation(selectedSpecialist);
+        });
+
+        function fetchDoctorInformation(specialist) {
+            const apiKey = "b861267f46msh4deff2ed6a836bfp19fa78jsna73f254e9499";
+            const apiUrl = `https://us-doctors-and-medical-professionals.p.rapidapi.com/search_npi?specialty=${specialist}`;
+
+            fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    "X-RapidAPI-Key": apiKey,
+                    "X-RapidAPI-Host": "us-doctors-and-medical-professionals.p.rapidapi.com"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Clear previous doctor information
+                doctorList.innerHTML = '';
+
+                // Display the fetched doctor information
+                if (data && data.result_count > 0) {
+                    data.results.forEach(doctor => {
+                        const doctorName = doctor.basic.name;
+                        const doctorSpecialty = doctor.specialty[0].actor;
+
+                        const doctorInfo = document.createElement('div');
+                        doctorInfo.innerHTML = `<p>Doctor Name: ${doctorName}</p><p>Specialty: ${doctorSpecialty}</p>`;
+                        doctorList.appendChild(doctorInfo);
+                    });
+                } else {
+                    doctorList.innerHTML = '<p>No doctors found for this specialty.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching doctor information:', error);
+            });
+        }
+    });
+</script>
+</body>
+</html>

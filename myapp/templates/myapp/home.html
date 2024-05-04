@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-w8Bt/zLCq4x84Z3fWt82BBAYklPSVSDT6z7Oybx1P5vCIx9+kkQYPWl/0MG7x4pgmkf7ovumgF+PjiueXaN1Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home1.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+    <!-- Video background -->
+    <video autoplay loop muted id="video-background">
+        <source src="{% static 'videos/DNA.mp4' %}" type="video/mp4">
+        <!-- Add additional source elements for other video formats if necessary -->
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="slidebar">
+        <a href="/home">
+            <img src="{% static 'images/logo1.png' %}" alt="Logo" class="logo">
+        </a>
+        <ul>
+            <li>
+                <a href="/home">
+                    <i class="fa fa-home" aria-hidden="true"></i>Home
+                </a>
+            </li>
+            <li>
+                <a href="/symptoms-checker">
+                    <i class="fas fa-diagnoses"></i>Symptoms Checker
+                </a>
+            </li>
+            <li>
+                <a href="/consultation-booking">
+                    <i class="fa fa-book" aria-hidden="true"></i>Consultation Booking
+                </a>
+            </li>
+            <li>
+                <a href="/doctor">
+                    <i class="fas fa-user-md"></i>Doctors
+                </a>
+            </li>
+            <li>
+                <a href="/history">
+                    <i class="fa fa-history" aria-hidden="true"></i>History
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+        <div class="content">
+            <p>Have any problems with managing your dashboard? Try to contact the customer support.</p>
+            <button>Contact</button>
+        </div>
+
+        <div class="profile">
+            <img src="{% static 'images/profile.png' %}" alt="profile" class="dp">
+            <h1>Luigi Amarillo</h1>
+            <img src="{% static 'images/notif.png' %}" alt="notification" class="notif">
+        </div>
+
+        <div class="hero">
+            <img src="{% static 'images/hero.png' %}" alt="hero" class="hero">
+        </div>
+
+        <!-- Calendar section -->
+<div class="calendar">
+    <h3>
+        <button id="prev-month">&#10094;</button>
+        <span id="calendar-title"></span>
+        <button id="next-month">&#10095;</button>
+    </h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody id="calendar-body">
+            <!-- Calendar days will be generated here -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Upcoming Appointments Section -->
+<div class="container">
+    <h2>Upcoming Appointments</h2>
+    <hr>
+    <div class="appointment-container">
+        <div class="row header">
+            <div class="column">Last Name</div>
+            <div class="column">First Name</div>
+            <div class="column">Middle Initial</div>
+            <div class="column">Appointment Type</div>
+            <div class="column">Time</div>
+            <div class="column">Date</div>
+            <div class="column">Doctor</div>
+        </div>
+        <!-- Sample Row for Demonstration -->
+        <div class="row">
+            <div class="column">Doe</div>
+            <div class="column">John</div>
+            <div class="column">M</div>
+            <div class="column">Initial Consultation</div>
+            <div class="column">09:00 am</div>
+            <div class="column">2024-04-25</div>
+            <div class="column">Dr. Smith</div>
+        </div>
+
+        <div class="row">
+            <div class="column">Amarillo</div>
+            <div class="column">Luigi</div>
+            <div class="column">D</div>
+            <div class="column">Routine Check-up</div>
+            <div class="column">10:00 am</div>
+            <div class="column">2024-04-28</div>
+            <div class="column">Dr. Smith</div>
+        </div>
+        <!-- Add more rows dynamically here if needed -->
+    </div>
+</div>
+
+
+<style>
+.hero {
+    position: fixed;
+    top: 64px;
+    left: 420px;
+    transform: translateX(-50%);
+    width: 553px;
+    height: 250px;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    color: #00111d;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: none; /* Remove shadow */
+}
+
+    /* Adjusted CSS for the upcoming appointments section */
+.appointment-container {
+    overflow-x: auto;
+    margin-top: 20px;
+    background-color: #ffffff; /* Add background color */
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 570px;
+
+}
+
+.container {
+    margin-top: -580px; /* Adjust margin-top */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 610px;
+    margin-left: calc(50% - -90px); /* Center horizontally */
+    background-color: #fff;
+    height: 535px;
+}
+
+
+.container h2 {
+    font-size: 24px;
+    color: #00111d;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: #fff;
+    margin-top: 0;
+}
+
+hr {
+    border: none;
+    border-top: 2px dashed #666666;
+    background-color: #fff;
+    height: 1px;
+}
+
+/* Adjusted CSS for the table layout */
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    font-family: 'poppins';
+    font-size: 13px;
+}
+
+.header {
+    font-weight: bold;
+    font-family: 'poppins';
+    font-size: 15px;
+}
+
+.column {
+    flex: 1;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .row {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .column {
+        width: auto;
+    }
+}
+
+
+
+</style>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var calendarBody = document.getElementById('calendar-body');
+    var title = document.getElementById('calendar-title');
+    var prevButton = document.getElementById('prev-month');
+    var nextButton = document.getElementById('next-month');
+
+    var today = new Date();
+    var currentYear = today.getFullYear();
+    var currentMonth = today.getMonth();
+
+    prevButton.addEventListener('click', function() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        generateCalendar(currentYear, currentMonth);
+    });
+
+    nextButton.addEventListener('click', function() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        generateCalendar(currentYear, currentMonth);
+    });
+
+    generateCalendar(currentYear, currentMonth);
+});
+
+function generateCalendar(year, month) {
+    var calendarBody = document.getElementById('calendar-body');
+    var title = document.getElementById('calendar-title');
+
+    // Clear the previous calendar
+    calendarBody.innerHTML = '';
+
+    // Set the title to display the current month and year
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    title.textContent = monthNames[month] + ' ' + year;
+
+    // Get the first day of the month
+    var firstDay = new Date(year, month, 1);
+
+    // Get the number of days in the month
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // Calculate the starting position for the first day
+    var startDay = firstDay.getDay(); // 0 (Sunday) to 6 (Saturday)
+
+    // Generate calendar days
+    var html = '';
+    var dayCounter = 1;
+    for (var i = 0; i < 6; i++) {
+        html += '<tr>';
+        for (var j = 0; j < 7; j++) {
+            if (i === 0 && j < startDay) {
+                html += '<td></td>'; // Placeholder for empty cells before the first day
+            } else if (dayCounter > daysInMonth) {
+                html += '<td></td>'; // Placeholder for empty cells after the last day
+            } else {
+                var currentDate = new Date(year, month, dayCounter);
+                var currentDateString = currentDate.toDateString();
+                var today = new Date().toDateString();
+                var classes = currentDateString === today ? 'current-day' : '';
+                html += '<td class="' + classes + '">' + dayCounter + '</td>'; // Display the day number
+                dayCounter++;
+            }
+        }
+        html += '</tr>';
+    }
+
+    // Update the calendar body with the generated HTML
+    calendarBody.innerHTML = html;
+}
+
+
+</script>
+
+    </div>
+</body>
+</html>
